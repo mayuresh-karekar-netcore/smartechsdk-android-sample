@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.netcore.smartech.sample">
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name=".SampleApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="@xml/smartechsdk_sample_fbc"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:label="@string/update_profile"
+            android:parentActivityName=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Implicit Deeplink: OS will show pop up asking how you want to open the deeplink, in the App or Browser. -->
+                <!-- Deeplink URL: https://smartech.netcore.com -->
+                <data
+                    android:host="smartech.netcore.com"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MainActivity" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:label="@string/register"
+            android:parentActivityName=".activity.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Explicit Deeplink: OS will directly open the deeplink in the App. -->
+                <!-- Deeplink URL: sampleapp://smartech.netcore.com -->
+                <data
+                    android:host="smartech.netcore.com"
+                    android:scheme="sampleapp" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".service.FCMService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Smartech App Id -->
+        <meta-data
+            android:name="SMT_APP_ID"
+            android:value="04bdeb468f20a6d21dcb9a1775f8bb81" />
+
+        <!-- Hansel App Details -->
+        <meta-data
+            android:name="HANSEL_APP_ID"
+            android:value="RE7FGV0CLYBD6IVA8KJCXILX1" />
+        <meta-data
+            android:name="HANSEL_APP_KEY"
+            android:value="UC3LO4C8FUSOI0B15UUM2R85KS6MY9Q60DV5P3PHRX20BJO8PG" />
+
+        <!-- This flag will specify if Smartech SDK can fetch device's location automatically. (NOTE: If set to "1", Smartech SDK can fetch location automatically only when the app has location permission.) -->
+        <meta-data
+            android:name="SMT_IS_AUTO_FETCHED_LOCATION"
+            android:value="1" />
+    </application>
+
+</manifest>

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="14dp"
+        android:paddingBottom="36dp"
+        tools:context=".activity.MainActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/fcm_token"
+                app:layout_constraintBottom_toTopOf="@id/tv_fcm_token" />
+
+            <TextView
+                android:id="@+id/tv_fcm_token"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/not_available"
+                app:drawableEndCompat="@drawable/ic_copy_24"
+                app:drawableStartCompat="@drawable/ic_firebase_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/device_unique_id"
+                app:layout_constraintBottom_toTopOf="@id/tv_guid" />
+
+            <TextView
+                android:id="@+id/tv_guid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/not_available"
+                app:drawableEndCompat="@drawable/ic_copy_24"
+                app:drawableStartCompat="@drawable/ic_verified_user_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            style="@style/SectionHeaderStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/tracking_events" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorLightGrey"
+            android:orientation="horizontal"
+            android:padding="1dp">
+
+            <TextView
+                android:id="@+id/tv_add_to_wish_list"
+                style="@style/SectionItemStyle"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:drawablePadding="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="@string/add_to_wish_list"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_heart_24" />
+
+            <TextView
+                android:id="@+id/tv_add_to_cart"
+                style="@style/SectionItemStyle"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:drawablePadding="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="@string/add_to_cart"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_add_shopping_cart_24" />
+
+            <TextView
+                android:id="@+id/tv_checkout"
+                style="@style/SectionItemStyle"
+                android:layout_width="0dp"
+                android:layout_margin="1dp"
+                android:layout_weight="1"
+                android:background="@android:color/white"
+                android:drawablePadding="8dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:text="@string/checkout"
+                android:textSize="12sp"
+                app:drawableStartCompat="@drawable/ic_check_24" />
+
+        </LinearLayout>
+
+        <TextView
+            style="@style/SectionHeaderStyle"
+            android:layout_marginTop="1dp"
+            android:text="@string/tracking_users" />
+
+        <TextView
+            android:id="@+id/tv_update_profile"
+            style="@style/SectionItemStyle"
+            android:text="@string/update_profile"
+            app:drawableStartCompat="@drawable/ic_account_circle_24" />
+
+        <TextView
+            android:id="@+id/tv_clear_identity"
+            style="@style/SectionItemStyle"
+            android:text="@string/clear_user_identity"
+            app:drawableStartCompat="@drawable/ic_person_add_disabled_24" />
+
+        <TextView
+            android:id="@+id/tv_logout"
+            style="@style/SectionItemStyle"
+            android:text="@string/logout"
+            app:drawableStartCompat="@drawable/ic_exit_24" />
+
+        <TextView
+            style="@style/SectionHeaderStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/advanced" />
+
+        <TextView
+            android:id="@+id/tv_set_location"
+            style="@style/SectionItemStyle"
+            android:text="@string/set_location"
+            app:drawableStartCompat="@drawable/ic_location_24" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_opt_pn"
+            style="@style/SectionItemStyle"
+            android:drawableStart="@drawable/ic_notifications_24"
+            android:text="@string/opt_push_notifications" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_opt_in_app"
+            style="@style/SectionItemStyle"
+            android:drawableStart="@drawable/ic_comment_24"
+            android:text="@string/opt_in_apps" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/sw_opt_tracking"
+            style="@style/SectionItemStyle"
+            android:drawableStart="@drawable/ic_trending_up_24"
+            android:text="@string/opt_tracking" />
+
+    </LinearLayout>
+
+</ScrollView>

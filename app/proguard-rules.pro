@@ -1,0 +1,4 @@
+-dontwarn io.hansel.**
+-keep class io.hansel.*{*;}
+-keep class * implements io.hansel.**.* {*;}
+-keep class * extends io.hansel.**.* {*;}
