@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 
+import com.netcore.smartech.sample.MainBottomSheet;
 import com.netcore.smartech.sample.R;
 import com.netcore.smartech.sample.utils.FirebaseAnalyticsHelper;
 import com.netcore.smartech.sample.utils.HanselHelper;
@@ -28,6 +30,8 @@ import com.netcore.smartech.sample.utils.Utility;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+    private static final String TAG = "MainActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,13 +106,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
 
             case R.id.tv_update_profile: {
+                final MainBottomSheet bottomSheet = new MainBottomSheet();
+                bottomSheet.show(getSupportFragmentManager(), "bottom_sheet");
+                Looper looper = Looper.getMainLooper();
+                Handler handler = new Handler(looper);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Log.d(TAG, "Bottmsheet Activity: " + bottomSheet.getActivity());
+                    }
+                }, 5000);
+
                 // NOTE: User profile should be set only when user identity is present in Smartech SDK.
-                String identity = SmartechHelper.getUserIdentity(this);
+                /*String identity = SmartechHelper.getUserIdentity(this);
                 if (!TextUtils.isEmpty(identity)) {
                     startActivity(new Intent(this, ProfileActivity.class));
                 } else {
                     Toast.makeText(this, R.string.please_login_first, Toast.LENGTH_SHORT).show();
-                }
+                }*/
             }
             break;
 

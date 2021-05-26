@@ -78,10 +78,10 @@
         <!-- Hansel App Details -->
         <meta-data
             android:name="HANSEL_APP_ID"
-            android:value="RE7FGV0CLYBD6IVA8KJCXILX1" />
+            android:value="1LF3X71GPZMPDPMH7XF8HM5DI" />
         <meta-data
             android:name="HANSEL_APP_KEY"
-            android:value="UC3LO4C8FUSOI0B15UUM2R85KS6MY9Q60DV5P3PHRX20BJO8PG" />
+            android:value="TXMY6EYG0EMVYT7A42DHN9CRP37TXGKU38MR92S36LX0QIKOL0" />
 
         <!-- This flag will specify if Smartech SDK can fetch device's location automatically. (NOTE: If set to "1", Smartech SDK can fetch location automatically only when the app has location permission.) -->
         <meta-data
