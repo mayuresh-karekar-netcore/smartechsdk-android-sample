@@ -35,18 +35,19 @@ repositories {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation platform('com.google.firebase:firebase-bom:26.7.0')
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
     implementation 'androidx.multidex:multidex:2.0.1'
-    implementation 'androidx.work:work-runtime-ktx:2.5.0'
-    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.work:work-runtime-ktx:2.6.0'
+    implementation 'com.google.android.material:material:1.4.0'
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging:'
-    implementation 'com.netcore.android:smartech-nudges:8.5.8'
-    implementation 'com.netcore.android:smartech-sdk:3.1.12'
+    implementation 'com.netcore.android:smartech-nudges:8.5.17'
+    implementation 'com.netcore.android:smartech-push:3.2.2'
+    implementation 'com.netcore.android:smartech-sdk:3.2.4'
 
     testImplementation 'junit:junit:4.13.2'
 
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 }

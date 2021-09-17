@@ -21,8 +21,9 @@ import com.netcore.android.SMTBundleKeys;
 import com.netcore.android.Smartech;
 import com.netcore.android.inapp.InAppCustomHTMLListener;
 import com.netcore.android.logger.SMTDebugLevel;
-import com.netcore.android.notification.SMTNotificationOptions;
-import com.netcore.android.notification.channel.SMTNotificationChannel;
+import com.netcore.android.smartechpush.SmartPush;
+import com.netcore.android.smartechpush.notification.SMTNotificationOptions;
+import com.netcore.android.smartechpush.notification.channel.SMTNotificationChannel;
 import com.netcore.smartech.sample.R;
 import com.netcore.smartech.sample.activity.LoginActivity;
 import com.netcore.smartech.sample.activity.ProfileActivity;
@@ -59,7 +60,7 @@ public class SmartechHelper {
         SMTNotificationOptions options = new SMTNotificationOptions(context);
         options.setSmallIconTransparentId(resId);
         options.setTransparentIconBgColor(context.getString(R.color.colorAccent));
-        Smartech.getInstance(new WeakReference<>(context)).setNotificationOptions(options);
+        SmartPush.getInstance(new WeakReference<>(context)).setNotificationOptions(options);
     }
 
     /**
@@ -72,15 +73,15 @@ public class SmartechHelper {
      **/
     public static void createNotificationChannel(Context context, String channelId, String channelName, String groupId, String groupName) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-            Smartech smartech = Smartech.getInstance(new WeakReference<>(context));
-            smartech.createNotificationChannelGroup(groupId, groupName);
+            SmartPush smartPush = SmartPush.getInstance(new WeakReference<>(context));
+            smartPush.createNotificationChannelGroup(groupId, groupName);
 
             SMTNotificationChannel.Builder smtChannelBuilder = new SMTNotificationChannel.Builder(channelId, channelName, NotificationManager.IMPORTANCE_MAX);
             smtChannelBuilder.setChannelGroupId(groupId);
             smtChannelBuilder.setChannelDescription("This is sample notification channel.");
             smtChannelBuilder.setNotificationSound("sample_sound");
 
-            smartech.createNotificationChannel(smtChannelBuilder.build());
+            smartPush.createNotificationChannel(smtChannelBuilder.build());
         }
     }
 
@@ -140,7 +141,7 @@ public class SmartechHelper {
      **/
     public static void setDevicePushToken(Context context, String token) {
         if (!TextUtils.isEmpty(token)) {
-            Smartech.getInstance(new WeakReference<>(context)).setDevicePushToken(token);
+            SmartPush.getInstance(new WeakReference<>(context)).setDevicePushToken(token);
         } else {
             Log.e(TAG, "Token is null or empty.");
         }
@@ -150,7 +151,7 @@ public class SmartechHelper {
      * This method will return the FCM token saved locally in the Smartech SDK.
      **/
     public static String getDevicePushToken(Context context) {
-        return Smartech.getInstance(new WeakReference<>(context)).getDevicePushToken();
+        return SmartPush.getInstance(new WeakReference<>(context)).getDevicePushToken();
     }
 
     /**
@@ -159,7 +160,7 @@ public class SmartechHelper {
      * @param payload - Payload of the notification.
      **/
     public static boolean handlePushNotification(Context context, String payload) {
-        return Smartech.getInstance(new WeakReference<>(context)).handlePushNotification(payload);
+        return SmartPush.getInstance(new WeakReference<>(context)).handlePushNotification(payload);
     }
 
     /**
@@ -215,7 +216,7 @@ public class SmartechHelper {
      * This method will return whether user has opted for push notification. Returns true if opted-in.
      **/
     public static boolean hasOptedPushNotification(Context context) {
-        return Smartech.getInstance(new WeakReference<>(context)).hasOptedPushNotification();
+        return SmartPush.getInstance(new WeakReference<>(context)).hasOptedPushNotification();
     }
 
     /**
@@ -224,7 +225,7 @@ public class SmartechHelper {
      * @param opt - true for opt-in, false for opt-out.
      **/
     public static void optPushNotification(Context context, boolean opt) {
-        Smartech.getInstance(new WeakReference<>(context)).optPushNotification(opt);
+        SmartPush.getInstance(new WeakReference<>(context)).optPushNotification(opt);
     }
 
     /**
